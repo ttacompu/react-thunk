@@ -1,0 +1,51 @@
+/*body {
+    background-color: skyblue;
+    color: black;
+  }
+
+  .app {
+    width: 450px;
+    margin: 0 auto;
+    padding-top: 50px;
+  }
+
+  .strike{
+    text-decoration: line-through;
+  }
+
+  .todoItem{
+    margin-left:  5px;
+    cursor: pointer;
+  }
+
+  .FiltersContainer{
+    display : flex;
+    list-style-type: none;
+  }
+
+  .FiltersContainer li{
+    margin-right : 10px;
+    margin-left : 10px;
+  }
+
+  .noUnderLine{
+    text-decoration: none;
+  } */
+
+  .header{
+    padding : 20px;
+    font-size: 2em;
+    border-bottom:  1px solid greenyellow;
+
+  }
+
+  .content{
+    display: flex;
+    padding : 10xp;
+    margin-top: 20px;
+  }
+  
+  .content .leftMenu{
+    flex-basis: 20%;
+  }
+  
