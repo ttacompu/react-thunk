@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import {fetch} from 'whatwg-fetch';
-import {itemsFetchData} from '../actions/items';
+import { fetch } from 'whatwg-fetch';
+import { itemsFetchData } from '../actions/items';
 
 class ItemList extends Component {
     constructor(props) {
@@ -19,13 +19,18 @@ class ItemList extends Component {
             return <p>Loading…</p>;
         }
         return (
-            <ul>
+            <div>
                 {this.props.items.map((item, i) => (
-                    <li key={i}>
-                        {item}
-                    </li>
+                    <div key={i} className="movieContent">
+                        <div>
+                            <label>Title :</label>  <span className="title">{item.title} </span>
+                        </div>
+                        <div>
+                            <label>Release Date :</label>{JSON.stringify(item.release_date)}
+                        </div>
+                    </div>
                 ))}
-            </ul>
+            </div>
         );
 
 

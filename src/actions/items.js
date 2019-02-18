@@ -1,5 +1,5 @@
-import { mergeMap, map, catchError, tap, switchMap } from "rxjs/operators";
-import { of, throwError, Observable } from "rxjs";
+import { mergeMap, map, catchError, tap, switchMap  } from "rxjs/operators";
+import { of, throwError, Observable, forkJoin } from "rxjs";
 
 export const  itemsHasErrored = (hasErrored)=>({type : "ITEMS_HAS_ERRORED", hasErrored })
 export const itemsIsLoading = (isLoading)=>({type : "ITEMS_IS_LOADING", isLoading })
@@ -20,8 +20,18 @@ const fetchToObservable = (url)=>{
 export function itemsFetchData(url){
     return (dispatch) =>{
         dispatch(itemsIsLoading(true));
-        fetchToObservable(url).subscribe(
-            ({films}) =>{
+        fetchToObservable(url)
+        .pipe(map(x=>x.films), mergeMap(urls =>{
+            const requests = urls.map(x => fetchToObservable(x));
+            return forkJoin(requests).pipe(map((results)=> results.map(x=>{
+                return {
+                  ...x,
+                  release_date : new Date(x.release_date)
+                }
+              }) ))
+        }))
+        .subscribe(
+            (films) =>{
                 dispatch(itemsIsLoading(false));
                 dispatch(itemsFetchDataSuccess(films))
 

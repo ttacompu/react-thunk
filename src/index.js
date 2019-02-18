@@ -27,14 +27,14 @@ const ItemListContainer = connect(mapStateItemToProps, mapDispatchToProps)(ItemL
 const App = () => {
   return (
     <div>
-      <ItemListContainer />
+      
       <div className="header">Choose Your Star War Character</div>
       <div className="content">
         <div className="leftMenu">
           left menu
           </div>
         <div className="rightContent">
-              right content
+            <ItemListContainer />
         </div>
       </div>
     </div>
