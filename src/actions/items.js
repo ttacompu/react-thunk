@@ -33,7 +33,9 @@ export function itemsFetchData(url){
         .subscribe(
             (films) =>{
                 dispatch(itemsIsLoading(false));
+                dispatch(itemsHasErrored(false));
                 dispatch(itemsFetchDataSuccess(films))
+
 
             },
             err => dispatch(itemsHasErrored(true))
