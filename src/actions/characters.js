@@ -1,0 +1,1 @@
+export const currentCharacterAction = (currentCharacter)=>({type : "CURRENT_CHARACTER", payload : currentCharacter })

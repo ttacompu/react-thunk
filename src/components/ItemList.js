@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 import { fetch } from 'whatwg-fetch';
-import { itemsFetchData } from '../actions/items';
+
 
 class ItemList extends Component {
     constructor(props) {
-        super(props)
+        super(props);
     }
 
-    componentDidMount() {
-        this.props.fetchData('https://swapi.co/api/people/1/');
+    componentDidUpdate(preProps) {
+        if(preProps.currentCharacter.url !== this.props.currentCharacter.url ){
+            this.props.fetchData(this.props.currentCharacter.url);
+        }
     }
 
     render() {
