@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './myStyle.scss';
 import ItemList from './components/ItemList'
 import {Characters} from './components/characters'
@@ -44,7 +45,8 @@ const mapCurrentCharacterMapToProps = (state) =>{
     {
       "name": "R2-D2",
       "url": "https://swapi.co/api/people/3/"
-    }]
+    }],
+    currentCharacter : state.currentCharacter.name
 
   }
 }

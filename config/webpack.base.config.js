@@ -18,13 +18,20 @@ module.exports = env =>{
             }
           },
           {
-            test: /\.scss$/,
+            test: /\.(scss|css)$/,
             use: [
               'style-loader',
               'css-loader',
               'sass-loader'
             ]
-          }
+          },
+          {
+            test : /\.(eot|ttf|svg|png|gif|woff2)$/,
+            use : [
+                'file-loader'
+            ]
+           }
+          
         ]
       },
       plugins: [

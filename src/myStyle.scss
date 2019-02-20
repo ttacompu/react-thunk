@@ -48,4 +48,13 @@
   .content .leftMenu{
     flex-basis: 20%;
   }
+
+  .active{
+      background-color: white;
+      color : black !important;
+      font-weight: bold;
+      width: 90px !important;
+      border-left : 6px solid #32d700 !important;
+      padding-left : 10px;
+    }
   
