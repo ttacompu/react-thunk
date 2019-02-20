@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { fetch } from 'whatwg-fetch';
 
 
 class ItemList extends Component {

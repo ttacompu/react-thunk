@@ -1,5 +1,7 @@
 import { mergeMap, map, catchError, tap, switchMap  } from "rxjs/operators";
 import { of, throwError, Observable, forkJoin } from "rxjs";
+import { fetch } from 'whatwg-fetch';
+
 
 export const  itemsHasErrored = (hasErrored)=>({type : "ITEMS_HAS_ERRORED", hasErrored })
 export const itemsIsLoading = (isLoading)=>({type : "ITEMS_IS_LOADING", isLoading })
