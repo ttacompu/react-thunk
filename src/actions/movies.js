@@ -3,9 +3,9 @@ import { of, throwError, Observable, forkJoin } from "rxjs";
 import { fetch } from 'whatwg-fetch';
 
 
-export const  itemsHasErrored = (hasErrored)=>({type : "ITEMS_HAS_ERRORED", hasErrored })
-export const itemsIsLoading = (isLoading)=>({type : "ITEMS_IS_LOADING", isLoading })
-export const itemsFetchDataSuccess = (items) =>({type : "ITEMS_FETCH_DATA_SUCCESS", items})
+export const  moviesHasErrored = (hasErrored)=>({type : "ITEMS_HAS_ERRORED", hasErrored })
+export const moviesAreLoading = (isLoading)=>({type : "ITEMS_IS_LOADING", isLoading })
+export const movieFetchDataSuccess = (items) =>({type : "ITEMS_FETCH_DATA_SUCCESS", items})
 
 const fetchToObservable = (url)=>{
     return Observable.create(observer => {
@@ -19,9 +19,9 @@ const fetchToObservable = (url)=>{
       });
 }
 
-export function itemsFetchData(url){
+export function moviesFetchData(url){
     return (dispatch) =>{
-        dispatch(itemsIsLoading(true));
+        dispatch(moviesAreLoading(true));
         fetchToObservable(url)
         .pipe(map(x=>x.films), mergeMap(urls =>{
             const requests = urls.map(x => fetchToObservable(x));
@@ -34,13 +34,13 @@ export function itemsFetchData(url){
         }))
         .subscribe(
             (films) =>{
-                dispatch(itemsIsLoading(false));
-                dispatch(itemsHasErrored(false));
-                dispatch(itemsFetchDataSuccess(films))
+                dispatch(moviesAreLoading(false));
+                dispatch(moviesHasErrored(false));
+                dispatch(movieFetchDataSuccess(films))
 
 
             },
-            err => dispatch(itemsHasErrored(true))
+            err => dispatch(moviesHasErrored(true))
         )
     }
 }

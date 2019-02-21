@@ -2,31 +2,31 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './myStyle.scss';
-import ItemList from './components/ItemList'
+import MovieList from './components/movieList'
 import {Characters} from './components/characters'
 import { configureStore } from './store/configureStore'
-import { itemsFetchData } from './actions/items'
+import { moviesFetchData } from './actions/movies'
 import {currentCharacterAction} from './actions/characters'
 import { connect, Provider } from 'react-redux';
 
 
 const store = configureStore();
 
-const mapStateItemToProps = (state) => {
+const mapStateMovieToProps = (state) => {
   
   return {
-    hasErrored: state.itemsHasErrored,
-    isLoading: state.itemsIsLoading,
-    items: state.items,
+    hasErrored: state.movieHasErrored,
+    isLoading: state.movieIsLoading,
+    movies: state.movies,
     currentCharacter : state.currentCharacter
   };
 }
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchData: (url) => dispatch(itemsFetchData(url))
+    fetchData: (url) => dispatch(moviesFetchData(url))
   }
 }
-const ItemListContainer = connect(mapStateItemToProps, mapDispatchToProps)(ItemList)
+const MovieListContainer = connect(mapStateMovieToProps, mapDispatchToProps)(MovieList)
 
 const mapCurrentCharacterMapToProps = (state) =>{
   return {
@@ -69,7 +69,7 @@ const App = () => {
           <CurrentCharacter />
           </div>
         <div className="rightContent">
-            <ItemListContainer />
+            <MovieListContainer />
             
         </div>
       </div>

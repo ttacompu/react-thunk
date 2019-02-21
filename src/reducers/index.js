@@ -1,8 +1,8 @@
 import { combineReducers} from 'redux';
-import {items, itemsHasErrored, itemsIsLoading} from './items';
+import { movies, movieHasErrored, movieIsLoading} from './movies';
 import {currentCharacter} from './currentCharacter';
 
 export default combineReducers({
-    items, itemsHasErrored, itemsIsLoading, currentCharacter
+    movies, movieHasErrored, movieIsLoading, currentCharacter
 
 })
