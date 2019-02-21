@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import moment from 'moment';
+
 
 
 class ItemList extends Component {
@@ -27,7 +29,7 @@ class ItemList extends Component {
                             <label>Title :</label>  <span className="title">{item.title} </span>
                         </div>
                         <div>
-                            <label>Release Date :</label>{JSON.stringify(item.release_date)}
+                            <label>Release Date :</label>{moment(item.release_date).format('YYYY-MM-DD hh:mm')}
                         </div>
                     </div>
                 ))}
